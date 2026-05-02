@@ -1,0 +1,55 @@
+Pour installer et orchestrer des modèles d'IA de manière légère sur Debian, **OpenClaw** est une excellente option car il est conçu pour être minimaliste et efficace.
+
+Voici la méthode la plus simple pour le mettre en place rapidement.
+
+---
+
+## 1. Prérequis
+Assurez-vous que votre système est à jour et que vous disposez de **Python 3** (version 3.9 ou supérieure recommandée) et de **Pip**.
+
+```bash
+sudo apt update && sudo apt upgrade -y
+sudo apt install python3 python3-pip git -y
+```
+
+## 2. Installation de OpenClaw
+La méthode la plus "light" consiste à cloner le dépôt et à installer les dépendances dans un environnement virtuel pour ne pas polluer votre système Debian.
+
+```bash
+# Cloner le dépôt
+git clone https://github.com/openclaw/openclaw.git
+cd openclaw
+
+# Créer un environnement virtuel
+python3 -m venv venv
+source venv/bin/activate
+
+# Installation des dépendances
+pip install -r requirements.txt
+```
+
+## 3. Configuration et Utilisation
+OpenClaw fonctionne généralement via un fichier de configuration (souvent `config.yaml` ou `.env`) où vous définissez vos connecteurs (Ollama pour le local, ou des API comme OpenAI/Anthropic).
+
+### Lancer l'outil
+Pour démarrer l'orchestrateur en mode léger :
+```bash
+python main.py
+```
+
+### Pourquoi c'est efficace sur Debian ?
+*   **Consommation CPU/RAM réduite :** Contrairement à des solutions lourdes comme LangChain qui chargent des centaines de modules, OpenClaw se concentre sur l'essentiel.
+*   **Modularité :** Vous n'activez que les "workers" (agents) dont vous avez besoin.
+
+---
+
+### Conseil pour l'orchestration "Lightweight"
+Si vous souhaitez faire tourner les modèles en local de la manière la plus fluide possible sur votre machine Linux, je vous recommande de coupler OpenClaw avec **Ollama**.
+
+1.  **Installer Ollama :** `curl -fsSL [https://ollama.com/install.sh](https://ollama.com/install.sh) | sh`
+2.  **Lancer un modèle léger :** `ollama run llama3:8b` (ou `phi3` pour encore plus de légèreté).
+3.  **Lier OpenClaw :** Dans la configuration d'OpenClaw, pointez l'URL de l'API vers `http://localhost:11434`.
+
+
+
+Souhaitez-vous de l'aide pour configurer un fichier YAML spécifique afin de lier un modèle local à vos scripts ?
