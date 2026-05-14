@@ -1,5 +1,3 @@
-Voici une structure complète pour votre `README.md`. Elle est conçue pour être à la fois une vitrine pour le jury du hackathon et un guide technique clair pour Ilunga et l'équipe.
-
 ---
 
 # 🚀 Lobi-Bot : L'IA qui transforme WhatsApp en Boutique Intelligente
